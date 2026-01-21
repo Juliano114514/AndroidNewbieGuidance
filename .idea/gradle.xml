@@ -6,11 +6,17 @@
       <GradleProjectSettings>
         <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:\Program Files\gradle-8.11.1" />
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/chapters" />
+            <option value="$PROJECT_DIR$/chapters/lesson1_kotlin" />
+            <option value="$PROJECT_DIR$/chapters/lesson2_android_and_jvm" />
+            <option value="$PROJECT_DIR$/foundation" />
+            <option value="$PROJECT_DIR$/kn-shared" />
           </set>
         </option>
       </GradleProjectSettings>

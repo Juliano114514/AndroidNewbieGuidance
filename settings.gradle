@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "AndroidNewbieGuidance"
 include ':app'
+include ':kn-shared'
+include ':foundation'
+include ':chapters'
+include ':chapters:lesson1_kotlin'
+include ':chapters:lesson2_android_and_jvm'
