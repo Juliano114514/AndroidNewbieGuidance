@@ -1,38 +1,30 @@
 package com.example.androidnewbieguidance
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import com.example.androidnewbieguidance.databinding.MainLayoutBinding
-import com.example.foundation.utils.toast.ToastUtil
+import com.example.androidnewbieguidance.presenters.chapterLoading.ChapterLoadingPresenter
+import com.example.foundation.base.BaseActivity
+import com.example.foundation.base.presenter.BasePresenter
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
 
   private lateinit var binding: MainLayoutBinding
+  private val mPresenter = BasePresenter()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = MainLayoutBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
-    initListener()
+    mPresenter.apply{
+      add(ChapterLoadingPresenter())
+    }
+
+    mPresenter.onBind(this, binding.root)
   }
 
-  private fun initListener(){
-    binding.test1.setOnClickListener {
-      ToastUtil.showToast("你好")
-    }
-
-    binding.test2.setOnClickListener {
-      ToastUtil.showWarn("我是丁真")
-    }
-
-    binding.test3.setOnClickListener {
-      ToastUtil.showSuccess("芝士雪豹")
-    }
-
-    binding.test4.setOnClickListener {
-      ToastUtil.showFail("雪豹闭嘴")
-    }
+  override fun onDestroy() {
+    super.onDestroy()
+    mPresenter.onDestroy()
   }
-
 }

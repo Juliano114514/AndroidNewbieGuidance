@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="120dp"
+  app:cardCornerRadius="8dp"
+  app:cardElevation="4dp"
+  android:layout_margin="10dp">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp">
+
+    <!-- 章节图标 -->
+    <ImageView
+      android:id="@+id/iv_chapter_icon"
+      android:layout_width="48dp"
+      android:layout_height="48dp"
+      android:src="@mipmap/ic_launcher"/>
+
+    <!-- 章节名称 -->
+    <TextView
+      android:id="@+id/tv_chapter_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:text="章节1"
+      android:textSize="12sp"
+      android:layout_marginTop="4dp"/>
+
+  </LinearLayout>
+
+</androidx.cardview.widget.CardView>

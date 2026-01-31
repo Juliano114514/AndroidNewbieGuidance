@@ -1,12 +1,10 @@
 package com.example.foundation.base
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 
 /**
  * @Author: JULIANO
  * @CreateDate: 2026/1/24 13:43
  * @Description:
  */
-open class BaseActivity : AppCompatActivity(){
-
-}
+open class BaseActivity : ComponentActivity() {}
