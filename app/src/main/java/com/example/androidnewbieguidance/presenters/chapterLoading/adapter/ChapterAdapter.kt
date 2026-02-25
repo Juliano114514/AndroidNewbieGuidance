@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidnewbieguidance.R
-import com.example.foundation.entities.ChapterEntities
+import com.example.kn_shared.utils.chapterJump.ChapterJumpEntities
 
 /**
  * @Author: JULIANO
@@ -16,7 +16,7 @@ import com.example.foundation.entities.ChapterEntities
  * @Description:
  */
 class ChapterAdapter(
-  private val onItemClick: (ChapterEntities) -> Unit
+  private val onItemClick: (ChapterJumpEntities) -> Unit
 ) : RecyclerView.Adapter<ChapterAdapter.ViewHolder>() {
 
   private val items = mutableListOf<ChapterItem>()
@@ -60,5 +60,5 @@ class ChapterAdapter(
 data class ChapterItem(
   val name: String,
   val iconRes: Int = R.mipmap.ic_launcher_round,
-  val target: ChapterEntities // 点击后发送的信号
+  val target: ChapterJumpEntities // 点击后发送的信号
 )

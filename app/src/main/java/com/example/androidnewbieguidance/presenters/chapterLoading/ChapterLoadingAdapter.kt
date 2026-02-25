@@ -7,8 +7,6 @@ import com.example.androidnewbieguidance.R
  * @CreateDate: 2026/2/1 14:22
  * @Description:
  */
-class ChapterLoadingAdapter() {
-}
 
 data class ChapterBean(
   val id: Int = -1,

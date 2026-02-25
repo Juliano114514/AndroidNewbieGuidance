@@ -60,12 +60,15 @@ kotlin {
       dependencies {
         implementation(libs.kotlin.stdlib)
         // Add KMP dependencies here
+        implementation(libs.koin.core)
+        implementation(libs.kotlinx.coroutines.core)
       }
     }
 
     commonTest {
       dependencies {
         implementation(libs.kotlin.test)
+        implementation(libs.koin.test)
       }
     }
 
@@ -74,6 +77,9 @@ kotlin {
         // Add Android-specific dependencies here. Note that this source set depends on
         // commonMain by default and will correctly pull the Android artifacts of any KMP
         // dependencies declared in commonMain.
+        implementation(libs.koin.android)
+        implementation(libs.koin.androidx.compose)
+        implementation(libs.kotlinx.coroutines.core)
       }
     }
 
