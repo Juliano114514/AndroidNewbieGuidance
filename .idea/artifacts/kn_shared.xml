@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="kn-shared">
-    <output-path>$PROJECT_DIR$/kn-shared/build/libs</output-path>
-    <root id="archive" name="kn-shared.jar">
-      <element id="module-output" name="AndroidNewbieGuidance.kn-shared.androidMain" />
-    </root>
-  </artifact>
-</component>
