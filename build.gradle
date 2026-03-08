@@ -13,6 +13,7 @@ subprojects { sub ->
     sub.afterEvaluate {
       dependencies {
         implementation project(':foundation')
+        implementation project(':kn-shared')
       }
     }
   }

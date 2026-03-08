@@ -1,6 +1,6 @@
 package com.example.kn_shared.bridge
 
-import com.example.kn_shared.utils.chapterJump.ChapterJumpEntities
+import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities
 
 /**
  * @Author: JULIANO
@@ -9,6 +9,6 @@ import com.example.kn_shared.utils.chapterJump.ChapterJumpEntities
  */
 sealed class Action {
   data class ChapterJumpAction(
-    val chapterDetail : ChapterJumpEntities
+    val chapterDetail : ChapterNaviEntities
   ) : Action()
 }

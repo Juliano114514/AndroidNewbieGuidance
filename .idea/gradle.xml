@@ -13,8 +13,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chapters" />
-            <option value="$PROJECT_DIR$/chapters/lesson1_kotlin" />
-            <option value="$PROJECT_DIR$/chapters/lesson2_android_and_jvm" />
+            <option value="$PROJECT_DIR$/chapters/chapter1_kotlin" />
+            <option value="$PROJECT_DIR$/chapters/chapter2_android_and_jvm" />
             <option value="$PROJECT_DIR$/foundation" />
             <option value="$PROJECT_DIR$/kn-shared" />
           </set>

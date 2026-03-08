@@ -32,7 +32,6 @@ android {
     jvmTarget = '11'
   }
   buildFeatures {
-    compose true
     viewBinding true
   }
 }
@@ -60,8 +59,8 @@ dependencies {
   implementation libs.koin.android
   
   implementation project(':chapters')
-  implementation project(':chapters:lesson1_kotlin')
-  implementation project(':chapters:lesson2_android_and_jvm')
+  implementation project(':chapters:chapter1_kotlin')
+  implementation project(':chapters:chapter2_android_and_jvm')
   implementation project(':kn-shared')
   implementation project(':foundation')
 }

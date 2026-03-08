@@ -1,6 +1,6 @@
 package com.example.kn_shared.bridge
 
-import com.example.kn_shared.utils.chapterJump.NavigationManager
+import com.example.kn_shared.utils.chapterNavi.NavigationManager
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.foundation'
+    namespace 'com.example.chapter1_kotlin'
     compileSdk 36
 
     defaultConfig {
@@ -40,9 +40,5 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-    implementation libs.androidx.recyclerview
-    implementation libs.logger
     implementation libs.koin.android
-
-    implementation project(':kn-shared')
 }
