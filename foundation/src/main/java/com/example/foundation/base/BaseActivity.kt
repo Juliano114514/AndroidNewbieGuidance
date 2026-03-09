@@ -2,6 +2,7 @@ package com.example.foundation.base
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -18,7 +19,7 @@ import org.koin.android.ext.android.inject
  * @CreateDate: 2026/1/24 13:43
  * @Description:
  */
-open class BaseActivity : ComponentActivity() {
+open class BaseActivity : FragmentActivity() {
 
   private val navigationManager : NavigationManager by inject()
 

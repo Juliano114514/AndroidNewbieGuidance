@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <include
+    android:id="@+id/view_param"
+    layout="@layout/layout_param_setting"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+  <include
+    android:id="@+id/view_result"
+    layout="@layout/layout_result_display"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1" />
+</LinearLayout>

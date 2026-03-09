@@ -9,5 +9,10 @@
     <activity
       android:name="com.example.chapter1_kotlin.lesson2.ExtendActivity">
     </activity>
+
+    <activity
+      android:name="com.example.chapter1_kotlin.lesson3.Lesson3ConcurrencyActivity"
+      android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+    </activity>
   </application>
 </manifest>
