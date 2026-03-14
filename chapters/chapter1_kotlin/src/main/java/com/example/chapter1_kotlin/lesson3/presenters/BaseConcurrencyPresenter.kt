@@ -1,8 +1,5 @@
 package com.example.chapter1_kotlin.lesson3.presenters
 
-import android.widget.Button
-import android.widget.EditText
-import com.example.chapter1_kotlin.R
 import com.example.chapter1_kotlin.lesson3.ConcurrencyType
 import com.example.foundation.base.presenter.BasePresenter
 import kotlinx.coroutines.CoroutineScope
@@ -10,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -17,7 +15,7 @@ import kotlinx.coroutines.launch
 /**
  * @Author: JULIANO
  * @CreateDate: 2026/3/9 15:39
- * @Description:
+ * @Description: 并发Tab 基础 presenter
  */
 abstract class BaseConcurrencyPresenter(val type: ConcurrencyType) : BasePresenter() {
   private val _logFlow = MutableSharedFlow<String>(extraBufferCapacity = 100)
@@ -45,6 +43,12 @@ abstract class BaseConcurrencyPresenter(val type: ConcurrencyType) : BasePresent
   }
 
   abstract suspend fun runAlgorithm(params: Map<String, Int>)
+
+  protected open suspend fun doTask(taskDescription: String = "Mocked Task") {
+    val time = (800..2000).random().toLong()
+    printLog("⏳ $taskDescription，预计耗时 ${time}ms...")
+    delay(time)
+  }
 
   override fun onDestroy() {
     super.onDestroy()

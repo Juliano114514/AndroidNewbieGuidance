@@ -6,10 +6,21 @@
   android:orientation="vertical"
   android:background="@color/white">
 
+  <TextView
+    android:id="@+id/tv_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:gravity="center"
+    android:text="Lesson3 并发问题"
+    android:textSize="24sp"
+    android:textStyle="bold" />
+
   <com.google.android.material.tabs.TabLayout
     android:id="@+id/tab_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
     app:tabMode="scrollable"
     app:tabIndicatorColor="@color/purple_500"
     app:tabSelectedTextColor="@color/purple_700" />

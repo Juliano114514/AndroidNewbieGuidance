@@ -1,5 +1,6 @@
 package com.example.chapter1_kotlin.lesson3.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -9,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.chapter1_kotlin.R
 import com.example.chapter1_kotlin.databinding.FragmentConcurrencyBaseBinding
+import com.example.chapter1_kotlin.lesson2.myApply
 import com.example.chapter1_kotlin.lesson3.ConcurrencyType
 import com.example.chapter1_kotlin.lesson3.ParamInjectUtil
 import com.example.chapter1_kotlin.lesson3.defaultParams
@@ -18,13 +20,11 @@ import kotlinx.coroutines.launch
 /**
  * @Author: JULIANO
  * @CreateDate: 2026/3/9 15:28
- * @Description:
+ * @Description: 基础页面设计
  */
 
 class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
   private var _binding: FragmentConcurrencyBaseBinding? = null
-  // 增加安全的 binding 获取，仅在生命周期内使用
-  private val binding get() = _binding!!
 
   private lateinit var type: ConcurrencyType
   private lateinit var presenter: BaseConcurrencyPresenter
@@ -33,17 +33,19 @@ class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
   private var paramInputMap: Map<String, EditText> = emptyMap()
 
   companion object {
+    const val TYPE = "type"
+    const val MAX_LOG_SIZE = 10000
     fun newInstance(type: ConcurrencyType) = ConcurrencyFragment().apply {
       arguments = Bundle().apply {
-        putString("TYPE", type.name)
+        putString(TYPE, type.name)
       }
     }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    val typeName = arguments?.getString("TYPE") ?: ConcurrencyType.PRODUCER_CONSUMER.name
-    type = ConcurrencyType.valueOf(typeName)
+    val typeName = arguments?.getString(TYPE) ?: ConcurrencyType.PRODUCER_CONSUMER.name
+    type = ConcurrencyType.valueOf(typeName) // 根据枚举类的typename解析对应的type类型
 
     presenter = when (type) {
       ConcurrencyType.PRODUCER_CONSUMER -> ProducerConsumerPresenter()
@@ -54,7 +56,8 @@ class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
     }
   }
 
-  // Fragment 使用构造器传入了 LayoutId，这里直接 bind 即可，无需手动 inflate
+  // 在 onCreateView 中返回了 return inflater.inflate(mContentLayoutId, container, false)
+  // 因而这里的 view 实际上就是 binding.root, 不需要再 inflate 创建，直接 bind 绑定即可
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     _binding = FragmentConcurrencyBaseBinding.bind(view)
@@ -64,14 +67,16 @@ class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
   }
 
   private fun initViews() {
-    // 1. 调用 Util 进行组件化注入
+    val binding = _binding ?: return
+
+    // 调用 Util 进行组件化注入
     paramInputMap = ParamInjectUtil.injectParamViews(
       requireContext(),
       binding.viewParam.llParamContainer,
       type.defaultParams
     )
 
-    // 2. 绑定开始按钮事件
+    // 绑定开始按钮事件
     binding.viewParam.btnStart.setOnClickListener {
       // 清理上一轮日志
       binding.viewResult.tvConsoleLog.text = ""
@@ -84,26 +89,30 @@ class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
     }
   }
 
+  @SuppressLint("SetTextI18n")
   private fun observeLogs() {
     viewLifecycleOwner.lifecycleScope.launch {
       viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
         presenter.logFlow.collect { log ->
-          // 核心优化：使用 append 进行增量绘制，而非全量 text 覆盖
-          binding.viewResult.tvConsoleLog.append("$log\n")
-
-          // 简单截断：如果文本过长，清空一半防 OOM (对于演示 Demo 足够高效)
-          val currentTextLength = binding.viewResult.tvConsoleLog.text.length
-          if (currentTextLength > 10000) {
-            val truncated = binding.viewResult.tvConsoleLog.text.substring(currentTextLength - 5000)
-            binding.viewResult.tvConsoleLog.text = "...\n$truncated"
-          }
-
-          // 保证 ScrollView 自动跟随输出滚到底部
-          val scrollView = binding.viewResult.root
-          scrollView.post {
-            scrollView.fullScroll(View.FOCUS_DOWN)
-          }
+          updateLogUi(log)
         }
+      }
+    }
+  }
+
+  @SuppressLint("SetTextI18n")
+  private fun updateLogUi(log: String){
+    val binding = _binding ?: return
+    binding.viewResult.tvConsoleLog.apply {
+      append("$log\n")
+
+      if(this.text.length > MAX_LOG_SIZE){
+        text = "...\n${text.substring(text.length / 2)}"
+      }
+
+      val scrollView = binding.viewResult.root
+      scrollView.post {
+        scrollView.fullScroll(View.FOCUS_DOWN)  // TODO: 新开一课学一下焦点控制orz
       }
     }
   }

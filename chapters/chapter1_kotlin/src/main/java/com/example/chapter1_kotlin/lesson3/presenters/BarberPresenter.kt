@@ -5,6 +5,11 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * 顾客到：有空位就坐下，没空位就走，并唤醒理发师
+ * 理发师：队列空则睡觉，有人就理发，理完唤醒下一个
+ */
+
 class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
   override suspend fun runAlgorithm(params: Map<String, Int>) {
     val chairsCount = params["chairs"] ?: 3
@@ -14,14 +19,14 @@ class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
     val waitingChairs = Channel<Int>(chairsCount)
     val doneChannel = Channel<Unit>()
 
-    printLog("💈 开启理发店：共 $chairsCount 把等候椅，$customersCount 位顾客即将到来")
+    printLog("🐢载着💈开业牛魔大酬宾🎉！共 $chairsCount 把等候椅，$customersCount 位顾客即将到来")
 
     val barberJob = demoScope.launch {
       while (true) {
         printLog("😴 理发师在睡觉...")
         val customerId = waitingChairs.receive()
         printLog("✂️ 理发师被顾客 $customerId 唤醒，开始理发！")
-        delay((400..800).random().toLong())
+        doTask("理发任务")
         printLog("✅ 理发师给顾客 $customerId 理发完毕。")
         doneChannel.send(Unit)
       }
@@ -38,7 +43,7 @@ class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
           doneChannel.receive() // 等待理发完成
           printLog("👋 顾客 $id 满意地离开了。")
         } else {
-          printLog("❌ 顾客 $id 发现没有空椅子，愤怒地离开了。")
+          printLog("❌ 顾客 $id 发现没有空椅子，愤怒地离开了😡。")
         }
       }
     }
