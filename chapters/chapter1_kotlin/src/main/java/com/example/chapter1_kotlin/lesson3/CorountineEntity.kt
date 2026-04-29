@@ -11,7 +11,8 @@ enum class ConcurrencyType(val title: String) {
   READER_WRITER("读者-写者"),
   PHILOSOPHER("哲学家就餐"),
   BARBER("理发师睡眠"),
-  SMOKER("吸烟者")
+  SMOKER("吸烟者"),
+  SWITCH_PROCESS("交替执行")
 }
 
 // 动态参数配置实体
@@ -37,4 +38,5 @@ val ConcurrencyType.defaultParams: List<ParamConfig>
     ConcurrencyType.PHILOSOPHER -> listOf(ParamConfig("count", "哲学家数量", 5))
     ConcurrencyType.BARBER -> listOf(ParamConfig("chairs", "等候椅数量", 3), ParamConfig("customers", "顾客总数", 10))
     ConcurrencyType.SMOKER -> listOf(ParamConfig("rounds", "演示轮数", 5))
+    ConcurrencyType.SWITCH_PROCESS -> listOf(ParamConfig("target", "目标次数", 20))
   }

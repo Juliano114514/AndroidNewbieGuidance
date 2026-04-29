@@ -53,6 +53,7 @@ class ConcurrencyFragment : Fragment(R.layout.fragment_concurrency_base) {
       ConcurrencyType.PHILOSOPHER -> PhilosopherPresenter()
       ConcurrencyType.BARBER -> BarberPresenter()
       ConcurrencyType.SMOKER -> SmokerPresenter()
+      ConcurrencyType.SWITCH_PROCESS -> SwitchProcessPresenter()
     }
   }
 
