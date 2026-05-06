@@ -2,6 +2,7 @@ package com.example.chapter1_kotlin.lesson3.presenters
 
 import com.example.chapter1_kotlin.lesson3.ConcurrencyType
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -48,6 +49,6 @@ class PhilosopherPresenter : BaseConcurrencyPresenter(ConcurrencyType.PHILOSOPHE
       }
     }
 
-    philosophers.forEach { it.join() }
+    philosophers.joinAll()
   }
 }

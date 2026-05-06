@@ -30,7 +30,7 @@ class LessonNaviPresenter(
 
   override fun getList() : List<ChapterItem>{
     return listOf(
-      ChapterItem(name = "Lesson1\n拓展函数", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson2ExtendFunction),
+      ChapterItem(name = "Lesson2\n拓展函数", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson2ExtendFunction),
       ChapterItem(name = "Lesson3\n经典并发模型", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson3Coroutine)
     )
   }

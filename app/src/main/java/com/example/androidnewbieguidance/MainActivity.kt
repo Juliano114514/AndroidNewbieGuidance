@@ -31,10 +31,10 @@ class MainActivity : BaseActivity() {
   }
 
   override fun onHandleNavigation(entity: ChapterNaviEntities): Boolean {
-    if(entity is ChapterNaviEntities.MainMenu)
-      return MainMenuNaviProxy.jumpTo(this,entity)
+    return if(entity is ChapterNaviEntities.MainMenu)
+      MainMenuNaviProxy.jumpTo(this,entity)
     else
-      return false
+      false
   }
 
   override fun onDestroy() {

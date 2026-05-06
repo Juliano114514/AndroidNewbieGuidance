@@ -3,6 +3,7 @@ package com.example.chapter1_kotlin.lesson3.presenters
 import com.example.chapter1_kotlin.lesson3.ConcurrencyType
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 
 /**
@@ -24,10 +25,12 @@ class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
     val barberJob = demoScope.launch {
       while (true) {
         printLog("😴 理发师在睡觉...")
+        // 没有顾客时调用receive会挂起
         val customerId = waitingChairs.receive()
         printLog("✂️ 理发师被顾客 $customerId 唤醒，开始理发！")
         doTask("理发任务")
         printLog("✅ 理发师给顾客 $customerId 理发完毕。")
+        // 通知下一个人来理发，唤醒排队队列
         doneChannel.send(Unit)
       }
     }
@@ -40,7 +43,7 @@ class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
         val isSeated = waitingChairs.trySend(id).isSuccess
         if (isSeated) {
           printLog("🪑 顾客 $id 找到空椅子，坐下等待。")
-          doneChannel.receive() // 等待理发完成
+          doneChannel.receive() // 挂起并等待理发完成
           printLog("👋 顾客 $id 满意地离开了。")
         } else {
           printLog("❌ 顾客 $id 发现没有空椅子，愤怒地离开了😡。")
@@ -48,7 +51,7 @@ class BarberPresenter : BaseConcurrencyPresenter(ConcurrencyType.BARBER) {
       }
     }
 
-    customerJobs.forEach { it.join() }
+    customerJobs.joinAll()
     barberJob.cancel() // 顾客都走完了，理发师下班
   }
 }

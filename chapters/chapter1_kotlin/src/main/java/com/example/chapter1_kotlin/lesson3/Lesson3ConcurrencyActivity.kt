@@ -33,9 +33,21 @@ class Lesson3ConcurrencyActivity : BaseActivity() {
       override fun getItemCount(): Int = types.size
     }
 
+    // 用 TabLayoutMediator 绑定 TabLayout 和 ViewPager2
+    // lambda闭包为 tab参数配置策略 源码附在下方
     TabLayoutMediator(binding.tabLayout, binding.viewPager){ tab, position ->
       tab.text = types[position].title
     }.attach()
+
+    /**
+     * public interface TabConfigurationStrategy {
+        * 用于对指定位置页面所对应的标签（Tab）进行配置。通常会调用 TabLayout.Tab#setText(CharSequence) 方法，但也可以应用任何形式的样式定制。
+        * @param tab：需要进行配置的标签对象，用以展示数据集中对应位置条目的标题。
+        * @param position：该条目在适配器数据集中的位置。
+     *  void onConfigureTab(@NonNull TabLayout.Tab tab, int position);
+     * }
+     */
+
   }
 
 }

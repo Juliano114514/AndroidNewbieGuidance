@@ -1,10 +1,7 @@
-# 目录 (完成的会贴上超链接)
-
-## 1. 基础kotlin语言与语法
-## 2. 安卓基础核心知识
-## 3. 跨端与多端开发
-## 4. 网络与数据传输
-## 5. 安卓音视频核心技术
-## 6. 数据存储与持久化
-## 7. 架构设计与工程化
-## 8. 音视频进阶与实战
+# 目录
+| 可能会很乱orz
+## Chapter1 基础的 kotlin 开发及 api 相关
+### Lesson 1 常见关键字
+### [Lesson 2 拓展函数](https://github.com/Juliano114514/AndroidNewbieGuidance/tree/main/chapters/chapter1_kotlin/src/main/java/com/example/chapter1_kotlin/lesson2)
+### [Lesson 3 并发问题](https://github.com/Juliano114514/AndroidNewbieGuidance/tree/main/chapters/chapter1_kotlin/src/main/java/com/example/chapter1_kotlin/lesson3)
+### Lesson 4 简单动态代理
