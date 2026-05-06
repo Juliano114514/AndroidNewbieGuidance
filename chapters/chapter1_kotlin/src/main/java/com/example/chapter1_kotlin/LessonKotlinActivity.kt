@@ -38,9 +38,9 @@ class LessonKotlinActivity : BaseActivity() {
   }
 
   override fun onHandleNavigation(entity: ChapterNaviEntities): Boolean {
-    if(entity is ChapterNaviEntities.Chapter1KotlinGuide)
-      return Chapter1KotlinLessonNaviProxy.jumpTo(this, entity)
+    return if(entity is ChapterNaviEntities.Chapter1KotlinGuide)
+      Chapter1KotlinLessonNaviProxy.jumpTo(this, entity)
     else
-      return false
+      false
   }
 }

@@ -16,13 +16,13 @@ object MainMenuNaviProxy {
     return when(chapter){
       is MainMenu.ToChapter1Kotlin -> Intent(context, LessonKotlinActivity::class.java)
       is MainMenu.ToChapter2Android -> null
+      is MainMenu.ToChapter3Compose -> null
     }
   }
 
   fun jumpTo(context: Context, chapter: MainMenu) : Boolean {
-    val intent = getIntent(context,chapter)
-    if(intent == null) return false
-    context.startActivity(intent)
+      val intent = getIntent(context, chapter) ?: return false
+      context.startActivity(intent)
     return true
   }
 }

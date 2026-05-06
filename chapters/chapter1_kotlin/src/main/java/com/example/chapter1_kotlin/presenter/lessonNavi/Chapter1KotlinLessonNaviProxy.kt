@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.example.chapter1_kotlin.lesson2.ExtendActivity
 import com.example.chapter1_kotlin.lesson3.Lesson3ConcurrencyActivity
+import com.example.chapter1_kotlin.lesson4.Lesson4ProxyActivity
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.Chapter1KotlinGuide
 
 /**
@@ -16,13 +17,13 @@ object Chapter1KotlinLessonNaviProxy {
     return when(chapter){
       is Chapter1KotlinGuide.Lesson2ExtendFunction -> Intent(context, ExtendActivity::class.java)
       is Chapter1KotlinGuide.Lesson3Coroutine -> Intent(context, Lesson3ConcurrencyActivity::class.java)
+      is Chapter1KotlinGuide.Lesson4Proxy -> Intent(context, Lesson4ProxyActivity::class.java)
     }
   }
 
   fun jumpTo(context: Context, chapter: Chapter1KotlinGuide) : Boolean {
-    val intent = getIntent(context,chapter)
-    if(intent == null) return false
-    context.startActivity(intent)
+      val intent = getIntent(context, chapter) ?: return false
+      context.startActivity(intent)
     return true
   }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="动态代理 (MiniRetrofit) 测试"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <EditText
+        android:id="@+id/et_city_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入查询城市名称 (如：北京)"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btn_send_proxy_request"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="发送手写 Retrofit 请求"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:background="#0A000000">
+
+        <TextView
+            android:id="@+id/tv_proxy_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="等待请求..."
+            android:textSize="16sp"
+            android:padding="10dp" />
+    </ScrollView>
+
+</LinearLayout>

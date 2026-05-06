@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
+  <uses-permission android:name="android.permission.INTERNET" />
   <application>
     <activity
       android:name="com.example.chapter1_kotlin.LessonKotlinActivity">
@@ -11,8 +11,14 @@
     </activity>
 
     <activity
+      android:name="com.example.chapter1_kotlin.lesson4.Lesson4ProxyActivity"
+      android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+    </activity>
+
+    <activity
       android:name="com.example.chapter1_kotlin.lesson3.Lesson3ConcurrencyActivity"
       android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
     </activity>
+
   </application>
 </manifest>
