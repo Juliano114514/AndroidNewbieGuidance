@@ -1,22 +1,16 @@
-package com.example.androidnewbieguidance.presenters.mainMenuNavigating
+package com.example.chapter2_core_and_view.lessonnavi
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foundation.databinding.NavigationLayoutBinding
-
-import com.example.foundation.utils.chapterLoading.adapter.ChapterItem
 import com.example.foundation.utils.chapterLoading.BaseChapterNaviPresenter
+import com.example.foundation.utils.chapterLoading.adapter.ChapterItem
 import com.example.kn_shared.bridge.ChapterBridge
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities
 
-/**
- * @Author: JULIANO
- * @CreateDate: 2026/1/31 16:24
- * @Description: 处理章节跳转业务
- */
-class MainMenuNaviPresenter(
+class CoreAndViewNaviPresenter(
   chapterBridge: ChapterBridge,
   private val binding: NavigationLayoutBinding
-) : BaseChapterNaviPresenter(chapterBridge) {
+) : BaseChapterNaviPresenter(chapterBridge){
 
   override fun onBindView() {
     val recyclerView = binding.rvChapterList
@@ -28,14 +22,13 @@ class MainMenuNaviPresenter(
     refreshAdapterData(getList())
   }
 
-
   override fun getList() : List<ChapterItem>{
     return listOf(
-      ChapterItem(name = "第一章\nkotlin入门", target = ChapterNaviEntities.MainMenu.ToChapter1Kotlin),
-      ChapterItem(name = "第二章\nAndroid进阶", target = ChapterNaviEntities.MainMenu.ToChapter2Android)
+      ChapterItem(
+        name = "Lesson1\nKSP工具",
+        target = ChapterNaviEntities.Chapter2AndroidGuide.Lesson1Ksp),
     )
   }
-
 
   override fun onUnbindView() {}
 }

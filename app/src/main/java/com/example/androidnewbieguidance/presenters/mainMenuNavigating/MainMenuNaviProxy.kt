@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.MainMenu
 
-import com.example.chapter1_kotlin.LessonKotlinActivity
+import com.example.chapter1_kotlin.KotlinActivity
+import com.example.chapter2_core_and_view.CoreAndViewActivity
 
 /**
  * @Author: JULIANO
@@ -14,8 +15,8 @@ import com.example.chapter1_kotlin.LessonKotlinActivity
 object MainMenuNaviProxy {
   private fun getIntent(context: Context, chapter: MainMenu): Intent? {
     return when(chapter){
-      is MainMenu.ToChapter1Kotlin -> Intent(context, LessonKotlinActivity::class.java)
-      is MainMenu.ToChapter2Android -> null
+      is MainMenu.ToChapter1Kotlin -> Intent(context, KotlinActivity::class.java)
+      is MainMenu.ToChapter2Android -> Intent(context, CoreAndViewActivity::class.java)
       is MainMenu.ToChapter3Compose -> null
     }
   }

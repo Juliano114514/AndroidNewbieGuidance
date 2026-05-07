@@ -60,7 +60,7 @@ dependencies {
   
   implementation project(':chapters')
   implementation project(':chapters:chapter1_kotlin')
-  implementation project(':chapters:chapter2_android_and_jvm')
-  implementation project(':kn-shared')
+    implementation project(':chapters:chapter2_android_core_and_view')
+    implementation project(':kn-shared')
   implementation project(':foundation')
 }

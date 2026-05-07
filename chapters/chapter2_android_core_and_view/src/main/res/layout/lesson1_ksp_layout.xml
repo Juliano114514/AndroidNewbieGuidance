@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KSP 注解处理测试"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp" />
+
+    <Button
+        android:id="@+id/btn_student_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="获取 Student 表信息" />
+
+    <Button
+        android:id="@+id/btn_teacher_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:text="获取 Teacher 表信息" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:background="#0A000000">
+
+        <TextView
+            android:id="@+id/tv_ksp_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="等待点击按钮测试..."
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:padding="10dp" />
+    </ScrollView>
+</LinearLayout>

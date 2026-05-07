@@ -1,19 +1,18 @@
-package com.example.androidnewbieguidance.presenters.mainMenuNavigating
+package com.example.chapter1_kotlin.presenter
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.foundation.databinding.NavigationLayoutBinding
-
-import com.example.foundation.utils.chapterLoading.adapter.ChapterItem
 import com.example.foundation.utils.chapterLoading.BaseChapterNaviPresenter
+import com.example.foundation.utils.chapterLoading.adapter.ChapterItem
 import com.example.kn_shared.bridge.ChapterBridge
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities
 
 /**
  * @Author: JULIANO
- * @CreateDate: 2026/1/31 16:24
- * @Description: 处理章节跳转业务
+ * @CreateDate: 2026/2/26 10:58
+ * @Description:
  */
-class MainMenuNaviPresenter(
+class KotlinNaviPresenter(
   chapterBridge: ChapterBridge,
   private val binding: NavigationLayoutBinding
 ) : BaseChapterNaviPresenter(chapterBridge) {
@@ -31,8 +30,9 @@ class MainMenuNaviPresenter(
 
   override fun getList() : List<ChapterItem>{
     return listOf(
-      ChapterItem(name = "第一章\nkotlin入门", target = ChapterNaviEntities.MainMenu.ToChapter1Kotlin),
-      ChapterItem(name = "第二章\nAndroid进阶", target = ChapterNaviEntities.MainMenu.ToChapter2Android)
+      ChapterItem(name = "Lesson2\n拓展函数", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson2ExtendFunction),
+      ChapterItem(name = "Lesson3\n经典并发模型", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson3Coroutine),
+      ChapterItem(name = "Lesson4\n动态代理", target = ChapterNaviEntities.Chapter1KotlinGuide.Lesson4Proxy)
     )
   }
 

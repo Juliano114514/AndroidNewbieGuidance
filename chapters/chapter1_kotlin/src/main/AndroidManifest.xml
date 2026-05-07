@@ -3,20 +3,20 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <application>
     <activity
-      android:name="com.example.chapter1_kotlin.LessonKotlinActivity">
+      android:name="com.example.chapter1_kotlin.KotlinActivity">
     </activity>
 
     <activity
-      android:name="com.example.chapter1_kotlin.lesson2.ExtendActivity">
+      android:name="com.example.chapter1_kotlin.lesson2extendfuction.ExtendActivity">
     </activity>
 
     <activity
-      android:name="com.example.chapter1_kotlin.lesson4.Lesson4ProxyActivity"
+      android:name="com.example.chapter1_kotlin.lesson4proxy.Lesson4ProxyActivity"
       android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
     </activity>
 
     <activity
-      android:name="com.example.chapter1_kotlin.lesson3.Lesson3ConcurrencyActivity"
+      android:name="com.example.chapter1_kotlin.lesson3concurrency.Lesson3ConcurrencyActivity"
       android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
     </activity>
 
