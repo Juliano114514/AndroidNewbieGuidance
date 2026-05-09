@@ -32,7 +32,8 @@ class MainMenuNaviPresenter(
   override fun getList() : List<ChapterItem>{
     return listOf(
       ChapterItem(name = "第一章\nkotlin入门", target = ChapterNaviEntities.MainMenu.ToChapter1Kotlin),
-      ChapterItem(name = "第二章\nAndroid进阶", target = ChapterNaviEntities.MainMenu.ToChapter2Android)
+      ChapterItem(name = "第二章\nAndroid进阶", target = ChapterNaviEntities.MainMenu.ToChapter2Android),
+      ChapterItem(name = "第三章\nCompose相关", target = ChapterNaviEntities.MainMenu.ToChapter3Compose)
     )
   }
 

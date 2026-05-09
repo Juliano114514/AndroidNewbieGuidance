@@ -6,6 +6,7 @@ import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.MainMenu
 
 import com.example.chapter1_kotlin.KotlinActivity
 import com.example.chapter2_core_and_view.CoreAndViewActivity
+import com.example.chapter3_compose_ui.ComposeUiActivity
 
 /**
  * @Author: JULIANO
@@ -17,7 +18,7 @@ object MainMenuNaviProxy {
     return when(chapter){
       is MainMenu.ToChapter1Kotlin -> Intent(context, KotlinActivity::class.java)
       is MainMenu.ToChapter2Android -> Intent(context, CoreAndViewActivity::class.java)
-      is MainMenu.ToChapter3Compose -> null
+      is MainMenu.ToChapter3Compose -> Intent(context, ComposeUiActivity::class.java)
     }
   }
 
