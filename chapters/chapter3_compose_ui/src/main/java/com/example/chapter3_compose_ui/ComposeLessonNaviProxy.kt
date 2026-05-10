@@ -2,6 +2,7 @@ package com.example.chapter3_compose_ui
 
 import android.content.Context
 import android.content.Intent
+import com.example.chapter3_compose_ui.lesson1.Lesson1BasicUiActivity
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.Chapter3ComposeGuide
 
 /**
@@ -11,7 +12,9 @@ import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.Chapter3Compo
  */
 object ComposeLessonNaviProxy {
   private fun getIntent(context: Context, chapter: Chapter3ComposeGuide): Intent? {
-    return null
+    return when(chapter){
+      is Chapter3ComposeGuide.Lesson1BasicUi -> Intent(context, Lesson1BasicUiActivity::class.java)
+    }
   }
 
   fun jumpTo(context: Context, chapter: Chapter3ComposeGuide) : Boolean {

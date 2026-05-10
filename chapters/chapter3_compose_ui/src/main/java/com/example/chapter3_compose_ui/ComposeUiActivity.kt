@@ -146,11 +146,6 @@ fun ChapterCardItem(
         fontSize = 12.sp,
         textAlign = TextAlign.Center
       )
-
-
     }
-
   }
-
-
 }
