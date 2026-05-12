@@ -3,6 +3,7 @@
 
   <application>
     <activity android:name="com.example.chapter3_compose_ui.ComposeUiActivity" />
-      <activity android:name="com.example.chapter3_compose_ui.lesson1.Lesson1BasicUiActivity" />
+      <activity android:name="com.example.chapter3_compose_ui.lesson1basic_ui.Lesson1BasicUiActivity" />
+      <activity android:name="com.example.chapter3_compose_ui.lesson2modifier.Lesson2ModifierActivity" />
   </application>
 </manifest>
