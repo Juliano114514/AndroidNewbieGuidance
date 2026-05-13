@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="theme_primary">#FF0FD852</color>
+    <color name="theme_primary_dark">#FF0BBF48</color>
+    <color name="theme_primary_light">#FF1A3D2A</color>
+
+    <color name="text_title">#FFF0F0F0</color>
+    <color name="text_body">#FFCCCCCC</color>
+    <color name="text_secondary">#FF999999</color>
+    <color name="text_hint">#FF666666</color>
+    <color name="text_disabled">#FF333333</color>
+
+    <color name="bg_page">#FF121212</color>
+    <color name="bg_card">#FF1E1E1E</color>
+    <color name="bg_elevated">#FF2C2C2C</color>
+
+    <color name="divider">#FF333333</color>
+    <color name="border">#FF2A2A2A</color>
+
+</resources>

@@ -35,7 +35,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="20dp"
-        android:background="#0A000000">
+        android:background="@color/bg_card">
 
         <TextView
             android:id="@+id/tv_proxy_result"

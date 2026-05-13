@@ -3,6 +3,7 @@ package com.example.chapter3_compose_ui
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,19 +25,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.chapter3_compose_ui.ui.theme.AppTheme
+import com.example.foundation.R
 import com.example.foundation.base.BaseActivity
 import com.example.kn_shared.bridge.Action
 import com.example.kn_shared.bridge.ChapterBridge
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities
-import org.koin.android.ext.android.inject
 import com.example.kn_shared.utils.chapterNavi.ChapterNaviEntities.Chapter3ComposeGuide
-import com.example.foundation.R
+import org.koin.android.ext.android.inject
 
 data class ComposeChapterItem(
   val name: String,
@@ -50,8 +51,8 @@ class ComposeUiActivity : BaseActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    setContent{
-      MaterialTheme {
+    setContent {
+      AppTheme {
         Chapter3NaviScreen(
           onItemClick = { target ->
             chapterBridge.handleAction(Action.ChapterJumpAction(target))
@@ -62,7 +63,7 @@ class ComposeUiActivity : BaseActivity() {
   }
 
   override fun onHandleNavigation(entity: ChapterNaviEntities): Boolean {
-    return if(entity is Chapter3ComposeGuide){
+    return if (entity is Chapter3ComposeGuide) {
       ComposeLessonNaviProxy.jumpTo(this, entity)
       true
     } else {
@@ -72,7 +73,7 @@ class ComposeUiActivity : BaseActivity() {
 }
 
 @Composable
-fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit){
+fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit) {
   val itemsList = remember {
     listOf(
       ComposeChapterItem(
@@ -89,15 +90,16 @@ fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit){
   Column(
     modifier = Modifier
       .fillMaxSize()
+      .background(MaterialTheme.colorScheme.background)
       .padding(top = 32.dp),
     horizontalAlignment = Alignment.CenterHorizontally
-  ){
+  ) {
     Text(
       text = "Chapter3 Compose相关",
       fontSize = 24.sp,
       fontWeight = FontWeight.Bold,
       modifier = Modifier.padding(bottom = 16.dp),
-      color = Color.Black
+      color = MaterialTheme.colorScheme.onBackground
     )
 
     // 章节列表
@@ -108,10 +110,10 @@ fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit){
         .padding(horizontal = 16.dp),
       contentPadding = PaddingValues(bottom = 16.dp)
     ) {
-      items(itemsList){ item ->
+      items(itemsList) { item ->
         ChapterCardItem(
           item = item,
-          onClick = {onItemClick(item.target)}
+          onClick = { onItemClick(item.target) }
         )
       }
     }
@@ -122,7 +124,7 @@ fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit){
 fun ChapterCardItem(
   item: ComposeChapterItem,
   onClick: () -> Unit
-){
+) {
   Card(
     modifier = Modifier
       .padding(10.dp)
@@ -130,15 +132,15 @@ fun ChapterCardItem(
       .clickable(onClick = onClick),
     shape = RoundedCornerShape(8.dp),
     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-    colors = CardDefaults.cardColors(containerColor = Color.White)
-  ){
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+  ) {
     Column(
       modifier = Modifier
         .fillMaxSize()
         .padding(12.dp),
       horizontalAlignment = Alignment.CenterHorizontally,
       verticalArrangement = Arrangement.Center
-    ){
+    ) {
       Image(
         painter = painterResource(id = item.iconRes),
         contentDescription = item.name,
@@ -148,7 +150,8 @@ fun ChapterCardItem(
       Text(
         text = item.name,
         fontSize = 12.sp,
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colorScheme.onSurface
       )
     }
   }

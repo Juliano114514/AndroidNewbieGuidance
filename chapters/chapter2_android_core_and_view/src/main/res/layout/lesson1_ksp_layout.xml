@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@color/white"
+    android:background="?android:attr/colorBackground"
     android:gravity="center_horizontal">
 
     <TextView
@@ -14,7 +14,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="20dp" />
 
     <Button
@@ -35,14 +35,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="20dp"
-        android:background="#0A000000">
+        android:background="@color/bg_card">
 
         <TextView
             android:id="@+id/tv_ksp_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="等待点击按钮测试..."
-            android:textColor="@color/black"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="16sp"
             android:padding="10dp" />
     </ScrollView>

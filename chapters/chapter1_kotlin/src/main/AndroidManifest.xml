@@ -3,7 +3,8 @@
   <uses-permission android:name="android.permission.INTERNET" />
   <application>
     <activity
-      android:name="com.example.chapter1_kotlin.KotlinActivity">
+      android:name="com.example.chapter1_kotlin.KotlinActivity"
+      android:theme="@style/Theme.Foundation">
     </activity>
 
     <activity
@@ -12,12 +13,12 @@
 
     <activity
       android:name="com.example.chapter1_kotlin.lesson4proxy.Lesson4ProxyActivity"
-      android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+      android:theme="@style/Theme.Foundation.ActionBar">
     </activity>
 
     <activity
       android:name="com.example.chapter1_kotlin.lesson3concurrency.Lesson3ConcurrencyActivity"
-      android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
+      android:theme="@style/Theme.Foundation.ActionBar">
     </activity>
 
   </application>

@@ -34,14 +34,11 @@ android {
 }
 
 dependencies {
-
-  implementation(libs.androidx.core.ktx)
-  implementation(libs.androidx.appcompat)
-  implementation(libs.material)
+  implementation(libs.bundles.androidx.base)
   implementation(libs.koin.android)
   testImplementation(libs.junit)
-  androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso.core)
+  androidTestImplementation(libs.bundles.android.test)
+
   implementation(project(":lib-ksp-annotation"))
   ksp(project(":lib-ksp-processor"))
 }

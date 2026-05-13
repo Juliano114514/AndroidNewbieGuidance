@@ -16,6 +16,7 @@ object ComposeLessonNaviProxy {
     return when(chapter){
       is Chapter3ComposeGuide.Lesson1BasicUi -> Intent(context, Lesson1BasicUiActivity::class.java)
       is Chapter3ComposeGuide.Lesson2Modifier -> Intent(context, Lesson2ModifierActivity::class.java)
+      is Chapter3ComposeGuide.Lesson3AdvancedAndPreView -> null
     }
   }
 

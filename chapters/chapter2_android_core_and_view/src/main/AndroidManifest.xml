@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
-        <activity android:name="com.example.chapter2_core_and_view.CoreAndViewActivity" />
-        <activity android:name="com.example.chapter2_core_and_view.lesson1ksp.Lesson1KspActivity" />
+        <activity
+            android:name="com.example.chapter2_core_and_view.CoreAndViewActivity"
+            android:theme="@style/Theme.Foundation" />
+        <activity
+            android:name="com.example.chapter2_core_and_view.lesson1ksp.Lesson1KspActivity"
+            android:theme="@style/Theme.Foundation" />
     </application>
 </manifest>

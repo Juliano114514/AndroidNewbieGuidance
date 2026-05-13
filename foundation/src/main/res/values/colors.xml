@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="purple_200">#FFBB86FC</color>
-  <color name="purple_500">#FF6200EE</color>
-  <color name="purple_700">#FF3700B3</color>
-  <color name="teal_200">#FF03DAC5</color>
-  <color name="teal_700">#FF018786</color>
-  <color name="black">#FF000000</color>
-  <color name="black_90">#CC000000</color>
-  <color name="white">#FFFFFFFF</color>
+
+    <!-- 主题色 -->
+    <color name="theme_primary">#FF00DC5A</color>
+    <color name="theme_primary_dark">#FF00B84C</color>
+    <color name="theme_primary_light">#FFE6FAF0</color>
+    <color name="theme_on_primary">#FFFFFFFF</color>
+
+    <!-- 文本色 -->
+    <color name="text_title">#FF1A1A1A</color>
+    <color name="text_body">#FF333333</color>
+    <color name="text_secondary">#FF666666</color>
+    <color name="text_hint">#FF999999</color>
+    <color name="text_disabled">#FFCCCCCC</color>
+
+    <!-- 背景色 -->
+    <color name="bg_page">#FFF5F5F5</color>
+    <color name="bg_card">#FFFFFFFF</color>
+    <color name="bg_elevated">#FFF0F0F0</color>
+
+    <!-- 分割线 / 边框 -->
+    <color name="divider">#FFEEEEEE</color>
+    <color name="border">#FFE5E5E5</color>
+
+    <!-- 状态色 -->
+    <color name="status_success">#FF00DC5A</color>
+    <color name="status_warning">#FFFF9900</color>
+    <color name="status_error">#FFFF3333</color>
+
+    <!-- 基础色 -->
+    <color name="black">#FF000000</color>
+    <color name="black_90">#CC000000</color>
+    <color name="white">#FFFFFFFF</color>
+
 </resources>

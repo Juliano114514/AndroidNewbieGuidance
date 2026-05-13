@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,6 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
+import com.example.chapter3_compose_ui.ui.theme.AppTheme
 import com.example.foundation.R
 import com.example.foundation.base.BaseActivity
 import com.example.foundation.utils.toast.ToastUtil
@@ -41,27 +43,30 @@ class Lesson2ModifierActivity : BaseActivity() {
     super.onCreate(savedInstanceState)
 
     enableEdgeToEdge()
-    setContent{
-      Column(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.safeDrawingPadding()
-      ) {
-        Row() {
-          YasyuSenpai()
-          ButtonSet()
+    setContent {
+      AppTheme {
+        Column(
+          verticalArrangement = Arrangement.Top,
+          horizontalAlignment = Alignment.CenterHorizontally,
+          modifier = Modifier
+            .safeDrawingPadding()
+            .background(MaterialTheme.colorScheme.background)
+        ) {
+          Row {
+            YasyuSenpai()
+            ButtonSet()
+          }
+          TargetView()
         }
-        TargetView()
       }
     }
-
   }
 }
 
 // 通用的功能由Modifier承载
 // 专有的属性用函数参数实现
 @Composable
-private fun YasyuSenpai(){
+private fun YasyuSenpai() {
   Column(
     verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,11 +74,11 @@ private fun YasyuSenpai(){
     modifier = Modifier
       .padding(16.dp)
       .background(
-        color = Color.Green,
+        color = MaterialTheme.colorScheme.primary,
         shape = RoundedCornerShape(8.dp) // 设置背景为圆角矩形
       )
       .padding(8.dp)
-      .background(Color.Yellow)
+      .background(MaterialTheme.colorScheme.primaryContainer)
       .width(90.dp)  // 指定宽高
       .height(120.dp) // 链式调用，会最终设高为75
   ) {
@@ -85,14 +90,14 @@ private fun YasyuSenpai(){
         .clip(CircleShape) // 裁切成圆形
         .size(75.dp)  // match_parent
         // clickable 会根据当前的面积来设定热区，设定之后再调整padding，响应区不会随之变化
-        .clickable{   // 点击事件这一块
-          name = if(name == "野兽先辈") "田所 浩二" else "野兽先辈"
+        .clickable {   // 点击事件这一块
+          name = if (name == "野兽先辈") "田所 浩二" else "野兽先辈"
         }
     )
     Text(
       text = name,
       fontSize = 15.sp,
-      color = Color.DarkGray
+      color = MaterialTheme.colorScheme.onSurface
     )
   }
 }
@@ -112,7 +117,7 @@ private fun YasyuSenpai(){
  */
 
 @Composable
-private fun ButtonSet(){
+private fun ButtonSet() {
   var name by remember { mutableStateOf("我是谁") }
   val fun1 = {
     name = "野兽先辈"
@@ -134,27 +139,27 @@ private fun ButtonSet(){
     Text(
       text = name,
       fontSize = 15.sp,
+      color = MaterialTheme.colorScheme.onSurfaceVariant
     )
     Button(
       onClick = mFun1,
       modifier = Modifier
-        .clickable{ fun2 },
-    ){
+        .clickable { fun2 },
+    ) {
       Text("点击测试")
     }
 
     Button(
       onClick = {
-        if(mFun1 != emptyFun){
+        if (mFun1 != emptyFun) {
           ToastUtil.showWarn("onClick 已清空")
           mFun1 = emptyFun
-        }
-        else {
+        } else {
           ToastUtil.showSuccess("onClick 已恢复")
           mFun1 = fun1
         }
       }
-    ){
+    ) {
       Text("点击禁用onClick")
     }
   }
@@ -162,7 +167,7 @@ private fun ButtonSet(){
 
 // 通过padding设定不同的热区
 @Composable
-private fun TargetView(){
+private fun TargetView() {
 
   val colors = listOf(
     Color(204, 153, 153), // 红
@@ -174,24 +179,23 @@ private fun TargetView(){
     Color(173, 153, 179)  // 紫
   )
 
-  val ringTexts = listOf("红色外圈", "橙色环", "黄色环", "绿色环", "青色环", "蓝色环", "紫色中心")
+  val ringTexts = listOf("红1环", "橙2环", "黄3环", "绿4环", "青5环", "蓝6环", "紫7环")
   val maxSize = 380.dp  // 最外圈直径
   val step = 55.dp      // 每圈减少的宽度
 
   // 堆叠 7 个同心圆
   Box(
-    modifier = Modifier.size(maxSize),
+    modifier = Modifier.size(maxSize)
   ) {
     for (i in 0..6) {
       val currentSize = maxSize - i * step
       Box(
         modifier = Modifier
-          .align(Alignment.Center)
+          .align(Alignment.Center) // 调整gravity，优先级比函数参数设置的更高
           .clip(CircleShape)
           .size(currentSize)
           .background(colors[i])
           .clickable {
-            // 替换成你的 Toast
             ToastUtil.showToast(ringTexts[i])
           }
       )
