@@ -83,6 +83,10 @@ fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit) {
       ComposeChapterItem(
         name = "Lesson2\nModifier",
         target = Chapter3ComposeGuide.Lesson2Modifier
+      ),
+      ComposeChapterItem(
+        name = "Lesson3\n@Preview相关",
+        target = Chapter3ComposeGuide.Lesson3AdvancedAndPreView
       )
     )
   }

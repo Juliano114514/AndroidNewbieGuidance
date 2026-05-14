@@ -3,7 +3,8 @@
 
   <application>
     <activity android:name="com.example.chapter3_compose_ui.ComposeUiActivity" />
-      <activity android:name="com.example.chapter3_compose_ui.lesson1basic_ui.Lesson1BasicUiActivity" />
-      <activity android:name="com.example.chapter3_compose_ui.lesson2modifier.Lesson2ModifierActivity" />
+    <activity android:name="com.example.chapter3_compose_ui.lesson1basic_ui.Lesson1BasicUiActivity" />
+    <activity android:name="com.example.chapter3_compose_ui.lesson2modifier.Lesson2ModifierActivity" />
+    <activity android:name="com.example.chapter3_compose_ui.lesson3advanced_and_preview.Lesson3PreviewActivity" />
   </application>
 </manifest>
