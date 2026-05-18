@@ -6,12 +6,16 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -19,6 +23,8 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -53,11 +59,20 @@ class ComposeUiActivity : BaseActivity() {
 
     setContent {
       AppTheme {
-        Chapter3NaviScreen(
-          onItemClick = { target ->
-            chapterBridge.handleAction(Action.ChapterJumpAction(target))
-          }
-        )
+        Column(
+          modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .safeDrawingPadding(),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+          ChapterHeader(chapterBridge)
+          Chapter3LessonList(
+            onItemClick = { target ->
+              chapterBridge.handleAction(Action.ChapterJumpAction(target))
+            }
+          )
+        }
       }
     }
   }
@@ -73,7 +88,7 @@ class ComposeUiActivity : BaseActivity() {
 }
 
 @Composable
-fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit) {
+private fun Chapter3LessonList(onItemClick: (Chapter3ComposeGuide) -> Unit) {
   val itemsList = remember {
     listOf(
       ComposeChapterItem(
@@ -90,42 +105,57 @@ fun Chapter3NaviScreen(onItemClick: (Chapter3ComposeGuide) -> Unit) {
       )
     )
   }
-
-  Column(
+  LazyVerticalGrid(
+    columns = GridCells.Fixed(3),
     modifier = Modifier
       .fillMaxSize()
-      .background(MaterialTheme.colorScheme.background)
-      .padding(top = 32.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+      .padding(horizontal = 16.dp),
+    contentPadding = PaddingValues(bottom = 16.dp)
   ) {
-    Text(
-      text = "Chapter3 Compose相关",
-      fontSize = 24.sp,
-      fontWeight = FontWeight.Bold,
-      modifier = Modifier.padding(bottom = 16.dp),
-      color = MaterialTheme.colorScheme.onBackground
-    )
-
-    // 章节列表
-    LazyVerticalGrid(
-      columns = GridCells.Fixed(3),
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(horizontal = 16.dp),
-      contentPadding = PaddingValues(bottom = 16.dp)
-    ) {
-      items(itemsList) { item ->
-        ChapterCardItem(
-          item = item,
-          onClick = { onItemClick(item.target) }
-        )
-      }
+    items(itemsList) { item ->
+      ChapterCardItem(
+        item = item,
+        onClick = { onItemClick(item.target) }
+      )
     }
   }
 }
 
 @Composable
-fun ChapterCardItem(
+private fun ChapterHeader(chapterBridge: ChapterBridge) {
+  Row(
+    modifier = Modifier
+      .fillMaxWidth()
+      .padding(bottom = 16.dp), // 统一给整个行加底部间距
+    verticalAlignment = Alignment.CenterVertically,
+  ) {
+    Box(modifier = Modifier.weight(1f))
+
+    Text(
+      text = "Chapter3 Compose相关",
+      fontSize = 24.sp,
+      fontWeight = FontWeight.Bold,
+      color = MaterialTheme.colorScheme.onBackground,
+    )
+    IconButton(
+      onClick = {
+        val target = Action.ChapterJumpAction(Chapter3ComposeGuide.CustomizeTheme)
+        chapterBridge.handleAction(target)
+      },
+      modifier = Modifier.weight(1f),
+    ) {
+      Icon(
+        painter = painterResource(R.drawable.theme_setting),
+        contentDescription = "主题设置",
+        tint = MaterialTheme.colorScheme.onBackground,
+        modifier = Modifier.size(24.dp)
+      )
+    }
+  }
+}
+
+@Composable
+private fun ChapterCardItem(
   item: ComposeChapterItem,
   onClick: () -> Unit
 ) {

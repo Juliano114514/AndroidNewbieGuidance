@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  View 主题槽位（与 Compose [foundationBaseColorScheme] 一致）：
+  theme_primary → colorPrimary / colorSecondary
+  theme_primary_dark → colorPrimaryVariant / colorSecondaryVariant（Compose: onPrimaryContainer）
+  theme_primary_light 仅用于 Compose primaryContainer，见 values-night/colors.xml
+-->
 <resources>
 
     <style name="Theme.Foundation" parent="Theme.MaterialComponents.DayNight.NoActionBar">

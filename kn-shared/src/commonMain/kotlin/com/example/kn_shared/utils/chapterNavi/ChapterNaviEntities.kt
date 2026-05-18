@@ -26,6 +26,7 @@ sealed class ChapterNaviEntities{
     object Lesson1BasicUi : Chapter3ComposeGuide()
     object Lesson2Modifier : Chapter3ComposeGuide()
     object Lesson3AdvancedAndPreView : Chapter3ComposeGuide()
+    object CustomizeTheme : Chapter3ComposeGuide()
   }
 
 }

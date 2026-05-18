@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.chapter3_compose_ui.lesson1basic_ui.ComposeUISeriesHelper.ButtonSet
+import com.example.chapter3_compose_ui.lesson1basic_ui.ComposeUISeriesHelper.CheckboxSet
 import com.example.chapter3_compose_ui.ui.theme.AppTheme
 import com.example.foundation.R
 import com.example.foundation.base.BaseActivity
@@ -55,54 +56,19 @@ class Lesson1BasicUiActivity : BaseActivity() {
             .safeDrawingPadding()
             .background(MaterialTheme.colorScheme.background)
         ) {
-          Text(
-            text = name,
-            // 通用的属性用modifier，专用的属性用函数参数
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Black,
-            color = MaterialTheme.colorScheme.onBackground
+          BasicUiHeader(
+            name = name,
+            name2 = name2,
+            name3 = name3,
+            iconRes = iconRes,
           )
-          // 普通图片用image
-          Image(
-            painter = painterResource(iconRes),
-            contentDescription = name2,
-          )
-          // 头像和图标用icon（可以实现染色操作）
-          Icon(
-            painter = painterResource(iconRes),
-            contentDescription = name3,
-          )
-
           ButtonContent(
             nameList = nameList,
             iconList = iconList,
           )
-
-          // 当成rcv使用
-          LazyRow(
-            modifier = Modifier
-              .background(MaterialTheme.colorScheme.primary)
-              .fillMaxWidth()
-              .wrapContentHeight()
-          ) {
-            items(20) {
-              Text(
-                text = "何意味",
-                modifier = Modifier.padding(8.dp),
-                color = MaterialTheme.colorScheme.onPrimary
-              )
-            }
-            item {
-              Text(
-                text = "何意味",
-                modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer),
-                fontSize = 28.sp,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
-              )
-            }
-          }
-
+          SampleLazyRow()
           ButtonSet()
+          CheckboxSet()
         }
       }
     }
@@ -133,6 +99,61 @@ fun ButtonContent(
         contentDescription = nameList[nameIdx]
       )
       Text(nameList[nameIdx])
+    }
+  }
+}
+
+@Composable
+private fun BasicUiHeader(
+  name: String,
+  name2: String,
+  name3: String,
+  iconRes: Int,
+) {
+  Column {
+    Text(
+      text = name,
+      // 通用的属性用modifier，专用的属性用函数参数
+      fontSize = 28.sp,
+      fontWeight = FontWeight.Black,
+      color = MaterialTheme.colorScheme.onBackground
+    )
+    // 普通图片用image
+    Image(
+      painter = painterResource(iconRes),
+      contentDescription = name2,
+    )
+    // 头像和图标用icon（可以实现染色操作）
+    Icon(
+      painter = painterResource(iconRes),
+      contentDescription = name3,
+    )
+  }
+}
+
+@Composable
+private fun SampleLazyRow() {
+  // 当成rcv使用
+  LazyRow(
+    modifier = Modifier
+      .background(MaterialTheme.colorScheme.primary)
+      .fillMaxWidth()
+      .wrapContentHeight()
+  ) {
+    items(20) {
+      Text(
+        text = "何意味",
+        modifier = Modifier.padding(8.dp),
+        color = MaterialTheme.colorScheme.onPrimary
+      )
+    }
+    item {
+      Text(
+        text = "何意味",
+        modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer),
+        fontSize = 28.sp,
+        color = MaterialTheme.colorScheme.onPrimaryContainer
+      )
     }
   }
 }
