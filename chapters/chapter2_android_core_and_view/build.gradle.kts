@@ -36,6 +36,8 @@ android {
 dependencies {
   implementation(libs.bundles.androidx.base)
   implementation(libs.koin.android)
+  implementation(libs.bundles.room)
+  ksp(libs.room.compiler)
   testImplementation(libs.junit)
   androidTestImplementation(libs.bundles.android.test)
 

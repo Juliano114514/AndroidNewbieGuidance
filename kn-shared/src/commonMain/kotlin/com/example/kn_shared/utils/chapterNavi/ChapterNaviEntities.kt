@@ -20,6 +20,7 @@ sealed class ChapterNaviEntities{
 
   sealed class Chapter2AndroidGuide : ChapterNaviEntities() {
     object Lesson1Ksp : Chapter2AndroidGuide()
+    object Lesson2Room : Chapter2AndroidGuide()
   }
 
   sealed class Chapter3ComposeGuide : ChapterNaviEntities() {

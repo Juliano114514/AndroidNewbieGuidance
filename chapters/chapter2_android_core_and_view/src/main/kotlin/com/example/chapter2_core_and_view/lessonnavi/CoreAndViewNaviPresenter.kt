@@ -27,6 +27,9 @@ class CoreAndViewNaviPresenter(
       ChapterItem(
         name = "Lesson1\nKSP工具",
         target = ChapterNaviEntities.Chapter2AndroidGuide.Lesson1Ksp),
+      ChapterItem(
+        name = "Lesson2\nRoom数据库",
+        target = ChapterNaviEntities.Chapter2AndroidGuide.Lesson2Room),
     )
   }
 

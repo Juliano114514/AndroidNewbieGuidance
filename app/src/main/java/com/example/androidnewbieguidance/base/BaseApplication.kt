@@ -2,6 +2,7 @@ package com.example.androidnewbieguidance.base
 
 import android.app.Application
 import com.example.androidnewbieguidance.di.appModule
+import com.example.chapter2_core_and_view.lesson2room.di.roomModule
 import com.example.chapter3_compose_ui.ui.theme.AppThemeColorManager
 import com.example.foundation.theme.AppThemeManager
 import com.example.foundation.utils.toast.ToastUtil
@@ -21,6 +22,7 @@ class BaseApplication : Application(){
     startKoin {
       androidContext(this@BaseApplication)
       modules(commonModule, appModule)
+      modules(roomModule)
     }
 
   }
