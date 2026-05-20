@@ -24,6 +24,14 @@ class StudentRepository(private val studentDao: StudentDao) {
     studentDao.deleteStudent(student)
   }
 
+  suspend fun getStudentByKey(key: String): StudentEntity? = withContext(Dispatchers.IO){
+    studentDao.getStudentByKey(key)
+  }
+
+  suspend fun clearAll() = withContext(Dispatchers.IO){
+    studentDao.clearAll()
+  }
+
   suspend fun importFromCsv(filePath: String): Result<Int> = withContext(Dispatchers.IO) {
     runCatching {
       // TODO: 解析 CSV 文件，构建 List<StudentEntity> 并通过 studentDao 批量插入

@@ -12,7 +12,8 @@ import kotlinx.coroutines.flow.Flow
 interface StudentDao {
   @Query("SELECT * FROM students ORDER BY student_number ASC")
   fun getAllStudentsFlow(): Flow<List<StudentEntity>>
-
+  @Query("SELECT * FROM students WHERE name = :keyword OR student_number = :keyword LIMIT 1")
+  suspend fun getStudentByKey(keyword: String): StudentEntity?
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun insertStudent(student: StudentEntity): Long
 

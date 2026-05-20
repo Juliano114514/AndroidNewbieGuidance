@@ -8,5 +8,6 @@
         <activity
             android:name="com.example.chapter2_core_and_view.lesson1ksp.Lesson1KspActivity"
             android:theme="@style/Theme.Foundation" />
+        <activity android:name="com.example.chapter2_core_and_view.lesson2room.Lesson2RoomActivity" />
     </application>
 </manifest>

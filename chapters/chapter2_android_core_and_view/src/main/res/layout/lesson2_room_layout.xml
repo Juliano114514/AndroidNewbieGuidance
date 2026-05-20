@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:paddingHorizontal="16dp">
+  
+  <TextView
+    android:id="@+id/tv_header"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="ROOM 数据库测试"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    android:layout_marginTop="@dimen/dp_16"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
+
+  <LinearLayout
+    android:id="@+id/view_filter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:gravity="center"
+    app:layout_constraintTop_toTopOf="@+id/tv_header"
+    app:layout_constraintBottom_toBottomOf="@id/tv_header"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <ImageView
+      android:layout_width="@dimen/dp_32"
+      android:layout_height="@dimen/dp_32"
+      android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="施工中"/>
+  </LinearLayout>
+
+  <EditText
+    android:id="@+id/et_target_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_20"
+    android:autofillHints="none"
+    android:background="#1A000000"
+    android:hint="请输入目标数据或ID (置空则为随机项)"
+    android:inputType="text"
+    android:minHeight="@dimen/dp_48"
+    android:paddingHorizontal="@dimen/dp_12"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_header" />
+
+
+  <include layout="@layout/lesson2_room_buttonset"
+    android:id="@+id/ll_button_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_16"
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/et_target_input" />
+
+  <TextView
+    android:id="@+id/tv_list_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:text="查询结果展示"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/ll_button_row" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv_data_display"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginTop="8dp"
+    android:background="#0A000000"
+    android:scrollbars="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tv_list_label"
+    tools:listitem="@android:layout/simple_list_item_2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
