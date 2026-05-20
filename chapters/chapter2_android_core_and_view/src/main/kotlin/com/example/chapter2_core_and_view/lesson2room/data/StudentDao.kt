@@ -25,4 +25,8 @@ interface StudentDao {
 
   @Query("DELETE FROM students")
   suspend fun clearAll()
+
+  // 随机抽卡
+  @Query("SELECT * FROM students ORDER BY RANDOM() LIMIT 1")
+  suspend fun getRandomStudent(): StudentEntity?
 }

@@ -5,8 +5,8 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:tools="http://schemas.android.com/tools"
-  android:paddingHorizontal="16dp">
-  
+  android:padding="@dimen/dp_20">
+
   <TextView
     android:id="@+id/tv_header"
     android:layout_width="wrap_content"
@@ -19,29 +19,6 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
 
-  <LinearLayout
-    android:id="@+id/view_filter"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical"
-    android:gravity="center"
-    app:layout_constraintTop_toTopOf="@+id/tv_header"
-    app:layout_constraintBottom_toBottomOf="@id/tv_header"
-    app:layout_constraintEnd_toEndOf="parent">
-
-    <ImageView
-      android:layout_width="@dimen/dp_32"
-      android:layout_height="@dimen/dp_32"
-      android:src="@mipmap/ic_launcher_round" />
-
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="施工中"/>
-  </LinearLayout>
-
   <EditText
     android:id="@+id/et_target_input"
     android:layout_width="0dp"
@@ -49,7 +26,7 @@
     android:layout_marginTop="@dimen/dp_20"
     android:autofillHints="none"
     android:background="#1A000000"
-    android:hint="请输入目标数据或ID (置空则为随机项)"
+    android:hint="请输入姓名或学号 (置空则为随机项)"
     android:inputType="text"
     android:minHeight="@dimen/dp_48"
     android:paddingHorizontal="@dimen/dp_12"
@@ -75,7 +52,21 @@
     android:layout_marginTop="20dp"
     android:text="查询结果展示"
     android:textStyle="bold"
+    android:textSize="16sp"
     app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/ll_button_row" />
+
+  <TextView
+    android:id="@+id/filter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:text="筛选"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:textColor="@color/theme_primary_dark"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBaseline_toBaselineOf="@id/tv_list_label"
     app:layout_constraintTop_toBottomOf="@+id/ll_button_row" />
 
   <androidx.recyclerview.widget.RecyclerView

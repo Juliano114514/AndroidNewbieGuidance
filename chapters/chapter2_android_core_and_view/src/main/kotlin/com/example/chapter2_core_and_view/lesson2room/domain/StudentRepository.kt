@@ -28,6 +28,9 @@ class StudentRepository(private val studentDao: StudentDao) {
     studentDao.getStudentByKey(key)
   }
 
+  suspend fun getRandomStudent(): StudentEntity? = withContext(Dispatchers.IO) {
+    studentDao.getRandomStudent()
+  }
   suspend fun clearAll() = withContext(Dispatchers.IO){
     studentDao.clearAll()
   }

@@ -24,12 +24,13 @@ class StudentAdapter : ListAdapter<StudentEntity, StudentAdapter.StudentViewHold
     holder.bind(getItem(position))
   }
 
-  @SuppressLint("SetTextI18n")
   class StudentViewHolder(private val binding: RoomItemStudentBinding)
     : RecyclerView.ViewHolder(binding.root){
     fun bind(student: StudentEntity){
-      binding.tvName.text = "${student.name} (ID: ${student.uid})"
-      binding.tvDetail.text = "学号: ${student.studentNumber} | 班级: ${student.className} | 分数: ${student.totalScore}"
+      binding.tvUid.text = "${student.uid}"
+      binding.tvName.text = student.name
+      val score = String.format("%.2f", student.totalScore)
+      binding.tvDetail.text = "学号: ${student.studentNumber} | 班级: ${student.className} | 分数: $score"
     }
   }
 
